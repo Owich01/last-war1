@@ -1,0 +1,59 @@
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buff Verteilung</title>
+</head>
+<body>
+  <h1>Buff Verteilung</h1>
+  <script>
+    class Spieler {
+      constructor(name, x, y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+      }
+    }
+
+    class BuffVerteilung {
+      constructor() {
+        this.spielerListe = [];
+      }
+
+      spielerHinzufuegen(name, x, y) {
+        const spieler = new Spieler(name, x, y);
+        this.spielerListe.push(spieler);
+      }
+
+      buffsVerteilen() {
+        this.spielerListe.forEach((spieler) => {
+          const { x, y } = spieler;
+          // Hier kann die Logik für die Buff-Verteilung basierend auf den Koordinaten implementiert werden
+          const buff = this.buffsBerechnen(x, y);
+          console.log(`Buff für Spieler ${spieler.name}: ${buff}`);
+        });
+      }
+
+      buffsBerechnen(x, y) {
+        // Hier kann die Logik implementiert werden, um die Buffs basierend auf den Koordinaten zu berechnen
+        // Dies ist nur ein einfaches Beispiel
+        if (x < 100 && y < 100) {
+          return "Ressourcenbonus";
+        } else if (x > 200 && y > 200) {
+          return "Truppenstärkungsbonus";
+        } else {
+          return "Kein Buff";
+        }
+      }
+    }
+
+    // Beispiel Spieler hinzufügen
+    const buffVerteilung = new BuffVerteilung();
+    buffVerteilung.spielerHinzufuegen("Spieler1", 50, 50);
+    buffVerteilung.spielerHinzufuegen("Spieler2", 250, 250);
+
+    // Buffs verteilen
+    buffVerteilung.buffsVerteilen();
+  </script>
+</body>
+</html>
